@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#C8A165</color>
+    <color name="colorPrimaryDark">#6E470B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="CPrimaryLight">#6098ff</color>
+    <color name="CPrimary">#9e9e9e</color>
+    <color name="CSecondary">#ff4342</color>
+    <color name="CSecondaryLight">#ff7a6e</color>
+    <color name="CSecondaryDark">#c4001a</color>
+    <color name="BorderLight">#425483d7</color>
+
+    <color name="WColor">#C8A165</color>
+    <color name="WLightColor">#FFE7AB</color>
+    <color name="WDarkColor">#B48D51</color>
+
+    <color name="available">#37ff00</color>
+
+</resources>

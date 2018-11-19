@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FireBasePracticeTest</string>
+    <string name="title_activity_admin_home">AdminHomeActivity</string>
+    <string name="title_activity_admin_main">AdminMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="book_entry">Book Entry</string>
+    <string name="click_below_to_add_image">Click below to add image</string>
+</resources>

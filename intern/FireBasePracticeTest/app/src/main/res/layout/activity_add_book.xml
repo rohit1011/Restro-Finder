@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddBookActivity"
+    android:id="@+id/constraint">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_add_book" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:text="@string/book_entry"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_first">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:background="@drawable/custom_border_add_book">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:paddingStart="1dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6.5dp"
+                    android:layout_marginBottom="5dp"
+                    android:contentDescription="TODO"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:srcCompat="@drawable/ic_bar_code" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etISBN"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/isbn"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:hint="Please Enter the ISBN"
+                        android:inputType="number"
+                        android:padding="5dp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:paddingStart="1dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6.5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:srcCompat="@drawable/ic_books_stack_of_three" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etbookname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/book_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:hint="Please Enter the book name"
+                        android:inputType="text"
+                        android:padding="5dp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_genre"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:paddingStart="1dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6.5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:srcCompat="@drawable/ic_books_stack_of_three" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etgenre"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/genre"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:hint="Please Enter Genre"
+                        android:inputType="text"
+                        android:padding="5dp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:paddingStart="1dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_genre">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6.5dp"
+                    android:layout_marginBottom="5.5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:srcCompat="@drawable/ic_user" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etPnumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:hint="Please Enter the author"
+                        android:inputType="text"
+                        android:padding="5dp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:paddingStart="1dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6.5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:srcCompat="@drawable/ic_newspaper" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etPublication"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/publication"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:hint="Please Enter the Publication"
+                        android:inputType="text"
+                        android:padding="5dp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:paddingStart="1dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="31dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6.5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:srcCompat="@drawable/ic_windows" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/etnumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/available_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:hint="Please Enter available pcs"
+                        android:inputType="number"
+                        android:padding="5dp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:text="@string/click_below_to_add_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+            <ImageView
+                android:id="@+id/upload_photo"
+                android:layout_width="120dp"
+                android:layout_height="117dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_border"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                />
+            <ImageView
+                android:id="@+id/upload_photo1"
+                android:layout_width="120dp"
+                android:layout_height="117dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_border"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:srcCompat="@drawable/ic_pictures" />
+
+            <!--
+                    <EditText
+                android:id="@+id/bookName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:hint="Please Enter the book name"
+                android:inputType="textPersonName"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/isbn" />
+
+            <EditText
+                android:id="@+id/isbn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="76dp"
+                android:ems="10"
+                android:hint="Please Enter the ISBN number"
+                android:inputType="textPersonName"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:textStyle="italic"
+                android:hint="Please Enter the Author"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bookName" />
+
+            <EditText
+                android:id="@+id/publication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:textStyle="italic"
+                android:hint="Please Enter the Publication"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/author" />
+-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:paddingBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/upload_photo">
+
+                <Button
+                    android:id="@+id/accept"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_accept_back"
+                    android:text="accept"
+                    android:textColor="#fff" />
+
+
+                <Button
+                    android:id="@+id/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cancel_back"
+                    android:text="cancel"
+                    android:textColor="#fff" />
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
+</ScrollView>
