@@ -19,24 +19,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import firebasepratice.com.firebasepracticetest.Objects.BookObject;
 import firebasepratice.com.firebasepracticetest.R;
-import firebasepratice.com.firebasepracticetest.adapters.BioBookAdapter;
 import firebasepratice.com.firebasepracticetest.adapters.BooksViewAdapter;
-import firebasepratice.com.firebasepracticetest.adapters.ChildBookAdapter;
-import firebasepratice.com.firebasepracticetest.adapters.MiscellaneousBookAdapter;
 
 public class HomeFragment extends Fragment {
     private View mViewFragment;
     private ArrayList<String> bookISBNObjects=new ArrayList<>();
     private BookObject bookObject;
-    private BooksViewAdapter booksViewAdapter;
+    private BooksViewAdapter booksViewAdapter,bioBookAdapter,miscellaneousBookAdapter,childBookAdapter;
     private RecyclerView recyclerView,recyclerViewBiography,recyclerViewChildGenre,recyclerViewOthers,recyclerViewFa;
     private  RecyclerView.LayoutManager mLayoutBiography,mLayoutManagerCategory;
-    private BioBookAdapter bioBookAdapter;
-    private ChildBookAdapter childBookAdapter;
-    private MiscellaneousBookAdapter miscellaneousBookAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,7 +61,7 @@ public class HomeFragment extends Fragment {
         recyclerViewBiography.setDrawingCacheEnabled(true);
         recyclerViewBiography.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         recyclerViewBiography.setItemAnimator(new DefaultItemAnimator());
-        bioBookAdapter = new BioBookAdapter(getActivity().getApplicationContext());
+        bioBookAdapter = new BooksViewAdapter(getActivity().getApplicationContext());
         recyclerViewBiography.setAdapter(bioBookAdapter);
 
         recyclerViewChildGenre = mViewFragment.findViewById(R.id.recycle_child_genre);
@@ -77,7 +73,7 @@ public class HomeFragment extends Fragment {
         recyclerViewChildGenre.setDrawingCacheEnabled(true);
         recyclerViewChildGenre.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         recyclerViewChildGenre.setItemAnimator(new DefaultItemAnimator());
-        childBookAdapter = new ChildBookAdapter(getActivity().getApplicationContext());
+        childBookAdapter = new BooksViewAdapter(getActivity().getApplicationContext());
         recyclerViewChildGenre.setAdapter(childBookAdapter);
 
         recyclerViewOthers = mViewFragment.findViewById(R.id.recycle_others);
@@ -89,7 +85,7 @@ public class HomeFragment extends Fragment {
         recyclerViewOthers.setDrawingCacheEnabled(true);
         recyclerViewOthers.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         recyclerViewOthers.setItemAnimator(new DefaultItemAnimator());
-        miscellaneousBookAdapter = new MiscellaneousBookAdapter(getActivity().getApplicationContext());
+        miscellaneousBookAdapter = new BooksViewAdapter(getActivity().getApplicationContext());
         recyclerViewOthers.setAdapter(miscellaneousBookAdapter);
 
 
@@ -102,25 +98,35 @@ public class HomeFragment extends Fragment {
                 BookObject bookObject= dataSnapshot.getValue(BookObject.class);
 
                 Log.d("tmz", "getImg: " + bookObject.getAuthor() + ", getMark_name " + bookObject.getBookName());*/
+                List<BookObject> NovelBook = new ArrayList<>();
+                List<BookObject> miscellaneous = new ArrayList<>();
+                List<BookObject> bioBook= new ArrayList<>();
+                List<BookObject> childBook= new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     String name = ds.getKey();
                     bookISBNObjects.add(name);
                     bookObject= ds.getValue(BookObject.class);
                     if (bookObject.getGenere().equals("Novel")) {
-                        booksViewAdapter.setBookObjects(bookObject);
-                        Log.i("FFD", "fdfd" + bookObject.getBookName());
+
+                        NovelBook.add(bookObject);
                     }
                     else if (bookObject.getGenere().equals("BioGraphy")){
-                        bioBookAdapter.setBioBookObjects(bookObject);
+
+                            bioBook.add(bookObject);
                     }
                     else if (bookObject.getGenere().equals("Child")){
-                        childBookAdapter.setChildBook(bookObject);
+                        childBook.add(bookObject);
                     }
                     else {
-                        miscellaneousBookAdapter.setMiscellaneousBook(bookObject);
+                        miscellaneous.add(bookObject);
                     }
 
                 }
+                booksViewAdapter.setBookObjects(NovelBook);
+                miscellaneousBookAdapter.setBookObjects(miscellaneous);
+                bioBookAdapter.setBookObjects(bioBook);
+                childBookAdapter.setBookObjects(childBook);
+
             }
 
             @Override

@@ -90,6 +90,13 @@
             android:src="@drawable/ic_notebook"
             app:fab_label="Add new entry"
             app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/book_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_notebook"
+            app:fab_label="Add Book return"
+            app:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
 

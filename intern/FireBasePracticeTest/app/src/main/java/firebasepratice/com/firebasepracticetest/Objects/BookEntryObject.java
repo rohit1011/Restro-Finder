@@ -3,6 +3,9 @@ package firebasepratice.com.firebasepracticetest.Objects;
 public class BookEntryObject {
     public String isbn, name, cardNumber, phoneNumber,borrowedDate,returnDate;
 
+    public BookEntryObject() {
+    }
+
     public BookEntryObject(String ISBN, String name, String cardNumber, String phoneNumber, String borrowedDate, String returnDate) {
         this.isbn = ISBN;
         this.name = name;

@@ -17,21 +17,24 @@ import java.util.List;
 
 import firebasepratice.com.firebasepracticetest.Objects.BookEntryObject;
 import firebasepratice.com.firebasepracticetest.Objects.BookObject;
+import firebasepratice.com.firebasepracticetest.Objects.UserBookBorrowDetails;
 import firebasepratice.com.firebasepracticetest.R;
 
 public class BookBorrowedAdapter extends RecyclerView.Adapter<BookBorrowedAdapter.BookHolder> {
     private Context mContext;
     private List<BookEntryObject> bookObjects= new ArrayList<>();
+    private List<UserBookBorrowDetails> userBookBorrowDetails = new ArrayList<>();
 
     public BookBorrowedAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
-
     public void setBookEntry(BookEntryObject bookObject) {
         bookObjects.add(bookObject);
         notifyDataSetChanged();
     }
+
+
 
     @NonNull
     @Override
@@ -43,7 +46,13 @@ public class BookBorrowedAdapter extends RecyclerView.Adapter<BookBorrowedAdapte
 
     @Override
     public void onBindViewHolder(@NonNull BookHolder bookHolder, int i) {
-    bookHolder.name.setText("");
+            bookHolder.isbn.setText(bookObjects.get(i).getISBN());
+            bookHolder.name.setText(bookObjects.get(i).getName());
+            bookHolder.phone.setText(bookObjects.get(i).getPhoneNumber());
+            bookHolder.bDate.setText(bookObjects.get(i).getBorrowedDate());
+            bookHolder.rDate.setText(bookObjects.get(i).getReturnDate());
+            bookHolder.cardNumber.setText(bookObjects.get(i).getCardNumber());
+
 
     }
 
@@ -58,7 +67,7 @@ public class BookBorrowedAdapter extends RecyclerView.Adapter<BookBorrowedAdapte
     }
 
     public class BookHolder extends RecyclerView.ViewHolder {
-        private TextView isbn,name,phone,bDate,rDate;
+        private TextView isbn,name,phone,bDate,rDate,cardNumber;
         public BookHolder(@NonNull View itemView) {
             super(itemView);
             isbn = itemView.findViewById(R.id.txt_isbn);
@@ -66,6 +75,7 @@ public class BookBorrowedAdapter extends RecyclerView.Adapter<BookBorrowedAdapte
             phone = itemView.findViewById(R.id.txt_phone);
             bDate = itemView.findViewById(R.id.txt_borrowed_date);
             rDate = itemView.findViewById(R.id.txt_return_date);
+            cardNumber = itemView.findViewById(R.id.txt_cardnumber);
         }
     }
 }

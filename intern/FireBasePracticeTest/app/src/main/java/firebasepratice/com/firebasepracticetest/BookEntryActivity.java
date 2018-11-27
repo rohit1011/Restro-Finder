@@ -26,18 +26,20 @@ import java.util.Date;
 
 import firebasepratice.com.firebasepracticetest.Objects.BookEntryObject;
 import firebasepratice.com.firebasepracticetest.Objects.BookObject;
+import firebasepratice.com.firebasepracticetest.Objects.UserBookBorrowDetails;
+import firebasepratice.com.firebasepracticetest.Objects.UserBookEntryDetailsObject;
 
 public class BookEntryActivity extends AppCompatActivity {
     private TextInputEditText ISBN, name, cardNumber, phoneNumber;
     private Button accept, cancel;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
-    private DatabaseReference admindb, userDb;
+    private DatabaseReference admindb, userDb,userentry;
     private StorageReference storageReference;
     private Integer quantity, getCheck;
     private Boolean lek = false, quantityCheck = false;
     private Boolean validation = true;
-    String formattedDate,output;
+    String formattedDate,output,bookName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class BookEntryActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         admindb = firebaseDatabase.getReference("Book Entry");
         userDb = firebaseDatabase.getReference("Books");
+        userentry = firebaseDatabase.getReference("UsersBookBorrowed");
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
@@ -145,6 +148,22 @@ cancel.setOnClickListener(new View.OnClickListener() {
                 });
     }
 
+    private void entry(String book_name) {
+        Log.i("TAAAAG","checkmessage"+bookName);
+        UserBookBorrowDetails userBookBorrowDetails = new UserBookBorrowDetails(book_name
+                , name.getText().toString()
+                , cardNumber.getText().toString()
+                , phoneNumber.getText().toString()
+                , formattedDate
+                , output);
+        userentry.child("Entries").child(cardNumber.getText().toString()).child(formattedDate).setValue(userBookBorrowDetails);
+        ISBN.getText().clear();
+        name.getText().clear();
+        cardNumber.getText().clear();
+        phoneNumber.getText().clear();
+        ISBN.requestFocus();
+    }
+
     private void start() {
 
         userDb.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -152,15 +171,15 @@ cancel.setOnClickListener(new View.OnClickListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(getApplicationContext(), "SUCESS", Toast.LENGTH_SHORT).show();
                 BookObject bookObject = dataSnapshot.child("Book Details").child(ISBN.getText().toString()).getValue(BookObject.class);
+                bookName= bookObject.getBookName();
                 quantity = Integer.parseInt(bookObject.getQuantity());
                 getCheck = quantity - 1;
-                userDb.child("Book Details").child(ISBN.getText().toString()).child("quantity").setValue(getCheck.toString());
-
-                ISBN.getText().clear();
-                name.getText().clear();
-                cardNumber.getText().clear();
-                phoneNumber.getText().clear();
-                ISBN.requestFocus();
+                userDb.child("Book Details").child(ISBN.getText().toString()).child("quantity").setValue(getCheck.toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        entry(bookName);
+                    }
+                });
                         }
 
             @Override
@@ -168,7 +187,6 @@ cancel.setOnClickListener(new View.OnClickListener() {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
-
     }
 
     private void getdate() {
@@ -184,7 +202,7 @@ cancel.setOnClickListener(new View.OnClickListener() {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            c.add(Calendar.DATE, 8);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
+            c.add(Calendar.DATE, 8);  // number of d11ays to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
             SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
             output = sdf1.format(c.getTime());
     }
