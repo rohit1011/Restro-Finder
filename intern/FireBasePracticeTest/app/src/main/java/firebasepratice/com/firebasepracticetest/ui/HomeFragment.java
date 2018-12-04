@@ -29,8 +29,8 @@ public class HomeFragment extends Fragment {
     private View mViewFragment;
     private ArrayList<String> bookISBNObjects=new ArrayList<>();
     private BookObject bookObject;
-    private BooksViewAdapter booksViewAdapter,bioBookAdapter,miscellaneousBookAdapter,childBookAdapter;
-    private RecyclerView recyclerView,recyclerViewBiography,recyclerViewChildGenre,recyclerViewOthers,recyclerViewFa;
+    private BooksViewAdapter booksViewAdapter,bioBookAdapter,miscellaneousBookAdapter,childBookAdapter,praticeBookAdapter;
+    private RecyclerView recyclerView,recyclerViewBiography,recyclerViewChildGenre,recyclerViewOthers,recyclerViewPracticeBook;
     private  RecyclerView.LayoutManager mLayoutBiography,mLayoutManagerCategory;
 
     @Nullable
@@ -88,6 +88,18 @@ public class HomeFragment extends Fragment {
         miscellaneousBookAdapter = new BooksViewAdapter(getActivity().getApplicationContext());
         recyclerViewOthers.setAdapter(miscellaneousBookAdapter);
 
+        recyclerViewPracticeBook = mViewFragment.findViewById(R.id.recycle_practice_book);
+        mLayoutManagerCategory = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewPracticeBook.setLayoutManager(mLayoutManagerCategory);
+        recyclerViewPracticeBook.setHasFixedSize(true);
+        recyclerViewPracticeBook.setItemViewCacheSize(20);
+        recyclerViewPracticeBook.setNestedScrollingEnabled(false);
+        recyclerViewPracticeBook.setDrawingCacheEnabled(true);
+        recyclerViewPracticeBook.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        recyclerViewPracticeBook.setItemAnimator(new DefaultItemAnimator());
+        praticeBookAdapter = new BooksViewAdapter(getActivity().getApplicationContext());
+        recyclerViewPracticeBook.setAdapter(praticeBookAdapter);
+
 
 
         DatabaseReference myRef = database.getReference("Books");
@@ -102,6 +114,7 @@ public class HomeFragment extends Fragment {
                 List<BookObject> miscellaneous = new ArrayList<>();
                 List<BookObject> bioBook= new ArrayList<>();
                 List<BookObject> childBook= new ArrayList<>();
+                List<BookObject> practiceBook = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     String name = ds.getKey();
                     bookISBNObjects.add(name);
@@ -117,6 +130,10 @@ public class HomeFragment extends Fragment {
                     else if (bookObject.getGenere().equals("Child")){
                         childBook.add(bookObject);
                     }
+                    else if(bookObject.getGenere().equals("Practice Books")){
+                        practiceBook.add(bookObject);
+
+                    }
                     else {
                         miscellaneous.add(bookObject);
                     }
@@ -126,6 +143,7 @@ public class HomeFragment extends Fragment {
                 miscellaneousBookAdapter.setBookObjects(miscellaneous);
                 bioBookAdapter.setBookObjects(bioBook);
                 childBookAdapter.setBookObjects(childBook);
+                praticeBookAdapter.setBookObjects(practiceBook);
 
             }
 

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Ecommerce</string>
+
+    <!--Title strings-->
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_account">Account</string>
+    <string name="title_search">Search</string>
+    <string name="category_id_item">CATEGORY_ID_ITEM</string>
+    <string name="related_projects">Related Projects</string>
+    <string name="features">Features</string>
+    <string name="specifications">Specifications</string>
+    <string name="similar_products">Similar Products</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="itemset">ITEMSET</string>
+    <string name="wishlist">Wishlist</string>
+</resources>

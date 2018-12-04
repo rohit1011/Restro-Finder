@@ -132,7 +132,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/others"
+        android:id="@+id/practice_book"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bookshelf"
@@ -145,6 +145,37 @@
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
         app:layout_constraintTop_toBottomOf="@+id/child_linear">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_practice_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00ffffff"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:verticalSpacing="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/others">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/others"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bookshelf"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingBottom="21dp"
+        android:paddingTop="20dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/practice_book">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycle_others"
@@ -162,6 +193,5 @@
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

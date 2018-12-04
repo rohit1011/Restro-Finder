@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f1f1f1"
+        android:layout_marginBottom="?attr/actionBarSize">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.mancj.materialsearchbar.MaterialSearchBar
+                android:id="@+id/material_search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mt_speechMode="false"
+                android:padding="2dp"
+                android:layout_margin="4dp"
+                app:mt_navIconEnabled="true"
+                app:mt_placeholder="Search for products..."
+                app:mt_searchIconDrawable="@drawable/ic_search_24"
+                app:mt_hint="@string/action_search"
+                style="@style/MaterialSearchBarLight"/>
+           <ss.com.bannerslider.Slider
+                android:id="@+id/mainBannerSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:slider_interval="8000"
+                app:slider_loopSlides="true"
+                app:slider_emptyView="@layout/item_slide_image"
+                app:slider_animateIndicators="true"
+                android:animateLayoutChanges="true"
+               android:layout_below="@id/material_search_bar"
+                app:slider_selectedSlideIndicator="@drawable/indicator_square_selected"
+                app:slider_unselectedSlideIndicator="@drawable/indicator_square_unselected"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"/>
+            <TextView
+                android:id="@+id/categories_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mainBannerSlider"
+                android:text="Categories"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:textStyle="bold"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/categories_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/categories_textview"
+                android:textAlignment="center"
+                android:layout_margin="8dp"/>
+            <TextView
+                android:id="@+id/sectionOne_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sectionOne products"
+                android:layout_margin="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/categories_recyclerview"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/sectionOneProductsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sectionOne_textview"/>
+
+            <ImageView
+                android:id="@+id/deals_image"
+                android:layout_width="match_parent"
+                android:layout_height="184dp"
+                android:layout_below="@+id/sectionOneProductsRecyclerView"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="4dp"
+                android:layout_marginStart="4dp"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:src="@mipmap/ic_launcher_round" />
+            <TextView
+                android:id="@+id/featured_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Featured Products"
+                android:layout_margin="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/deals_image"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/featuredProductsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/featured_textview" />
+            <TextView
+                android:id="@+id/sectionFour_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sectionFour Products"
+                android:layout_margin="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/featuredProductsRecyclerView"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/sectionFourProductsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sectionFour_textview" />
+
+            <ImageView
+                android:id="@+id/ad2_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sectionFourProductsRecyclerView"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="4dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_launcher_round" />
+            <ImageView
+                android:id="@+id/ad3_image"
+                android:layout_width="match_parent"
+                android:layout_height="184dp"
+                android:layout_below="@+id/ad2_image"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="4dp"
+                android:layout_marginStart="4dp"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:src="@mipmap/ic_launcher_round" />
+            <TextView
+                android:id="@+id/sectionfive_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Section Five"
+                android:layout_margin="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/ad3_image"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/sectionfiveRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sectionfive_textview" />
+            <TextView
+                android:id="@+id/sectionsix_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Section Six"
+                android:layout_margin="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/sectionfiveRecyclerView"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/sectionsixRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sectionsix_textview" />
+            <TextView
+                android:id="@+id/sectionseven_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Section Seven"
+                android:layout_margin="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/sectionsixRecyclerView"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/sectionsevenRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sectionseven_textview" />
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+</FrameLayout>
